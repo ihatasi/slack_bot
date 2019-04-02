@@ -1,4 +1,4 @@
-from slackbot.bot import Bot\
+from slackbot.bot import Bot
 
 @respond_to('what?')
 def what(message):
