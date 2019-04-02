@@ -40,6 +40,9 @@ def cost_balance(message, money):
     except:
         message.send('please num')
 
+@listen_to('balance')
+def send_balance(message):
+    message.send(balance)
 
 bot = Bot()
 bot.run()
