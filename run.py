@@ -19,10 +19,10 @@ def add_balance(message, money):
     try:
         money = int(money)
         global balance
-        str1 = 'old_balance:' + balance + '\n'
+        str1 = 'old_balance:' + str(balance) + '\n'
         balance += money
-        str2 = 'Add:' + money + '\n'
-        str3 = 'new_balance' + balance + '\n'
+        str2 = 'Add:' + str(money) + '\n'
+        str3 = 'new_balance' + str(balance) + '\n'
         message.send(str1+str2+str3)
     except:
         message.send('please num')
@@ -32,10 +32,10 @@ def cost_balance(message, money):
     try:
         money = int(money)
         global balance
-        str1 = 'old_balance:' + balance + '\n'
+        str1 = 'old_balance:' + str(balance) + '\n'
         balance -= money
-        str2 = 'Cost:' + money + '\n'
-        str3 = 'new_balance' + balance + '\n'
+        str2 = 'Cost:' + str(money) + '\n'
+        str3 = 'new_balance' + str(balance) + '\n'
         message.send(str1+str2+str3)
     except:
         message.send('please num')
@@ -43,7 +43,7 @@ def cost_balance(message, money):
 @listen_to('balance')
 def send_balance(message):
     global balance
-    str1 = 'now balance:' + balance
+    str1 = 'now balance:' + str(balance)
     message.send(str1)
 
 bot = Bot()
