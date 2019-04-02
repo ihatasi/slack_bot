@@ -42,7 +42,9 @@ def cost_balance(message, money):
 
 @listen_to('balance')
 def send_balance(message):
-    message.send(balance)
+    global balance
+    str1 = 'now balance:' + balance
+    message.send(str1)
 
 bot = Bot()
 bot.run()
