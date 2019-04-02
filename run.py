@@ -5,12 +5,13 @@ money = 0
 
 @listen_to('set (.*)')
 def what(message, set_money):
-    if type(set_money) == int:
+    try:
+        set_money = int(set_money)
         global money
         money = set_money
         message.reply('set money:', money)
-    else:
-        pass
+    except:
+        message.reply('please num')
 
 
 @listen_to('say (.*)')
