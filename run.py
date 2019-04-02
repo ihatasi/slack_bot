@@ -1,22 +1,44 @@
 from slackbot.bot import Bot
 from slackbot.bot import listen_to
 
-money = 0
+balance = 0
 
 @listen_to('set (.*)')
-def what(message, set_money):
+def set_balance(message, money):
     try:
-        set_money = int(set_money)
-        global money
-        money = set_money
-        message.reply('set money:', money)
+        money = int(money)
+        global balance
+        balance = money
+        message.send('set balance:{}'.format(balance))
     except:
-        message.reply('please num')
+        message.send('please num')
 
 
-@listen_to('say (.*)')
-def say(message, word):
-    message.reply(word + '!')
+@listen_to('add (.*)')
+def add_balance(message, money):
+    try:
+        money = int(money)
+        global balance
+        str1 = 'old_balance:' + balance + '\n'
+        balance += money
+        str2 = 'Add:' + money + '\n'
+        str3 = 'new_balance' + balance + '\n'
+        message.send(str1+str2+str3)
+    except:
+        message.send('please num')
+
+@listen_to('cost (.*)')
+def cost_balance(message, money):
+    try:
+        money = int(money)
+        global balance
+        str1 = 'old_balance:' + balance + '\n'
+        balance -= money
+        str2 = 'Cost:' + money + '\n'
+        str3 = 'new_balance' + balance + '\n'
+        message.send(str1+str2+str3)
+    except:
+        message.send('please num')
 
 
 bot = Bot()
