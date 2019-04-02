@@ -1,11 +1,19 @@
 from slackbot.bot import Bot
-from slackbot.bot import respond_to
+from slackbot.bot import listen_to
 
-@respond_to('what?')
-def what(message):
-    message.reply('free')
+money = 0
 
-@respond_to('say (.*)')
+@listen_to('set (.*)')
+def what(message, set_money):
+    if type(set_money) == int:
+        global money
+        money = set_money
+        message.reply('set money:', money)
+    else:
+        pass
+
+
+@listen_to('say (.*)')
 def say(message, word):
     message.reply(word + '!')
 
